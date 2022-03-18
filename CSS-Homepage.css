@@ -1,0 +1,50 @@
+body {
+    background-color: #AF7F75;
+}
+  
+#logo-Container {
+    background-color: #F3F4F2
+    ;
+    display: flex;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 35px;
+    width: fit-content;
+    border-radius: 20px;
+}
+
+#navigationButtons-Container {
+    display: flex;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 70px;
+    width: fit-content;
+    height: 150px;
+    justify-content: center;
+}
+
+.navButton {
+    background: #282025;
+    border: none;
+    color: #F3F4F2;
+    font-size: 35px;
+    border-radius: 20px;
+    transition-duration: 1s;
+    box-shadow: none;
+}
+
+.navButton:hover {
+    background: #F3F4F2;
+    border-color: #282025;
+    color: #282025;
+    font-size: 35px;
+    border-radius: 20px;
+    transition-duration: 1s;
+    cursor: pointer;
+    box-shadow: -5px 5px 10px black;
+}
+
+.centerButton {
+    margin-left: 120px;
+    margin-right: 120px;
+}

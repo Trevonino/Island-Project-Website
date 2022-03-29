@@ -79,14 +79,14 @@
         <option value="Other/Prefer Not To Say">Other/Prefer Not To Say</option>
     </select><br>
     <label for="phoneNum">Phone:</label><br>
-    <input type="text" name="phoneNum" id="phoneNum" class='textBox' maxlength="12" minlength="12" required><br>
+    <input type="text" name="phoneNum" id="phoneNum" class='textBox' maxlength="12" minlength="10" required><br>
     <label for="email">Email:</label><br>
     <input type="text" name="email" id="email" class='textBox' required><br>
     <label for="password">Password:</label><br>
-    <input type="text" name="password" id="password" class='textBox' required><br>
+    <input type="password" name="password" id="password" class='textBox' required><br>
     <label for="confPassword">Confirm Password:</label><br>
-    <input type="text" name="confPassword" id="confPassword" class='textBox' required><br>
-    <label for="newsletter">Subsrcibe To Newsletter:</label><br>
+    <input type="password" name="confPassword" id="confPassword" class='textBox' required><br>
+    <label for="newsletter">Subscribe to Newsletter:</label><br>
     <select name="newsletter" id="newsletter" class='textBox' required><br>
         <option value="1">Yes</option>
         <option value="0">No</option>

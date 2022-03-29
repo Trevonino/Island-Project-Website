@@ -59,8 +59,11 @@
 </head>
 <body>
 
+<div id="logo-Container">
+    <img src="The Island Project Logo (Transparent).png" alt="The Island Project" id="IslandProjectLogo">
+</div>    
 
-<div id="addItemForm-Container">
+<div id="addItemForm-Container" class='form-Container'>
     <form method="post" action="AdminAddItemResult.php" onsubmit=" return checkSubmit();">
     <label for="prodType">Product Type:</label><br>
     <select name="prodType" id="prodType" class='textBox' required><br>
@@ -73,7 +76,7 @@
     <input type="text" name="prodName" id="prodName" class='textBox' required><br>
     <label for="prodCost">Product Cost:</label><br>
     <input type="text" name="prodCost" id="prodCost" class='textBox' required><br>
-    <input type="submit" value="Add Item" class='logInButton'>
+    <input type="submit" value="Add Item" class='Button'>
     </form>
 </div>
 <p id='testpara' class='ng-hide'></p>

@@ -54,7 +54,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </div> 
 
 <p id='testpara'></p>
-<input type="button" value='Go Back To Admin Homepage' id='backToAdminButton' class='logInButton' onclick="location.href='AdminHomepage.php';">
+<input type="button" value='Go Back To Admin Homepage' id='backToAdminButton' class='Button' onclick="location.href='AdminHomepage.php';">
 
 <script>
 var itemMade = <?php if (isset($_SESSION["itemMade"])) { echo $_SESSION["itemMade"]; unset($_SESSION["itemMade"]);}

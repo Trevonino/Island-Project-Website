@@ -14,16 +14,6 @@ p {
     font-size: 30px;
 }
 
-#logo-Container {
-    background-color: #F3F4F2;
-    display: flex;
-    margin-right: auto;
-    margin-left: auto;
-    margin-top: 35px;
-    width: fit-content;
-    border-radius: 20px;
-}
-
 #adminLoginForm-Container {
     display: flex;
     margin-right: auto;

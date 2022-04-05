@@ -10,6 +10,8 @@
 
 <script src="http://student05web.mssu.edu/Javascripts(Raw)/CustomerPageScripts/CustomerCreateAccountScript.js"></script>
 
+<?php include($_SERVER['DOCUMENT_ROOT'].'/.db.inc.php'); ?>
+
 <?php 
 $max = new DateTime();
 ?>
@@ -18,7 +20,6 @@ $max = new DateTime();
 <body>
 
 <?php
-    session_start();
 
     function test_input($data)
     {
@@ -45,18 +46,6 @@ $max = new DateTime();
         $passwordInput = test_input($_POST["password"]);
         $newsletterInput = test_input($_POST["newsletter"]);
 
-        $servername = "209.106.201.103";
-        $username = "dbstudent14";
-        $password = "spicymonster10";
-        $dbname = "group5";
-
-        $conn = new mysqli($servername, $username, $password, $dbname);
-
-        // Check connection
-        if ($conn->connect_error) {
-            die("Connection failed: " . $conn->connect_error);
-        }
-
         //Create, Prepare, And Execute Select Statement To See If Row With Email Exists
         $selectStmt = $conn->prepare("SELECT * FROM Customer WHERE email = ?;");
         $selectStmt->bind_param("s", $emailInput);
@@ -68,9 +57,11 @@ $max = new DateTime();
         //If There Are 0 Rows In The Resulting Table, Executes The Insert. Otherwise, Show Error Message.
         if ($selectResult->num_rows == 0) {
 
+            $hashedPassword = password_hash($passwordInput, PASSWORD_DEFAULT);
+
             $insertStmt = $conn->prepare("INSERT INTO Customer (firstName, lastName, dateOfBirth, gender, phoneNumber, email, password, newsletterSubscriber, accountCreationDate)
                 VALUES (?, ?, ?, ?, ?, ?, ?, ?, sysdate());");
-            $insertStmt->bind_param("ssssssss", $firstNameInput, $lastInput, $birthDateInput, $genderInput, $phoneNumInput, $emailInput, $passwordInput, $newsletterInput);
+            $insertStmt->bind_param("ssssssss", $firstNameInput, $lastInput, $birthDateInput, $genderInput, $phoneNumInput, $emailInput, $hashedPassword, $newsletterInput);
 
             $insertResult = $insertStmt->execute();
 

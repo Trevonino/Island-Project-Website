@@ -11,8 +11,9 @@
 
     <script src="http://student05web.mssu.edu/Javascripts(Raw)/CustomerPageScripts/CustomerLoginScript.js"></script>
 
+    <?php include($_SERVER['DOCUMENT_ROOT'].'/.db.inc.php'); ?>
+
     <?php
-    session_start();
 
     function test_input($data)
     {
@@ -28,36 +29,24 @@
         $emailInput = test_input($_POST["email"]);
         $passwordInput = test_input($_POST["password"]);
 
-
-        $servername = "209.106.201.103";
-        $username = "dbstudent14";
-        $password = "spicymonster10";
-        $dbname = "group5";
-
-        // Create connection
-        $conn = new mysqli($servername, $username, $password, $dbname);
-
-        // Check connection
-        if ($conn->connect_error) {
-            die("Connection failed: " . $conn->connect_error);
-        }
-        //
-
         //SELECT ON JUST EMAIL
         //GRAB THE PASSWORD FROM THE RESULTING ROW AND CHECK THE HASH, IF TRUE MAKE APPROPRIATE SESSION VARIABLES
-        $stmt = $conn->prepare("SELECT * FROM Customer WHERE email = ? AND password = ?");
-        $stmt->bind_param("ss", $emailInput, $passwordInput);
+        $stmt = $conn->prepare("SELECT * FROM Customer WHERE email = ?");
+        $stmt->bind_param("s", $emailInput);
         $stmt->execute();
 
         $result = $stmt->get_result();
 
         if ($result->num_rows > 0) {
-
             while ($row = $result->fetch_assoc()) {
+
+            if (password_verify($passwordInput, $row["password"]))
                 $_SESSION["custId"] = $row["customerId"];
                 $_SESSION["custFName"] = $row["firstName"];
                 $_SESSION["custLName"] = $row["lastName"];
+
             }
+
         } else {
             $_SESSION['failedLogin'] = 1;
         }

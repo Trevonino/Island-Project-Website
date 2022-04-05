@@ -1,7 +1,7 @@
 $(document).ready(function(){
    
     try {
-        $('#logo-Container').load("http://student05web.mssu.edu/Pages/GenericResources/LogoTransparent.html");
+        $('#logo-Container').load("http://student05web.mssu.edu/Pages/Components/header.html");
     } catch (error){
         
     }

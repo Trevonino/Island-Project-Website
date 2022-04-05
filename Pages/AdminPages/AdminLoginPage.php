@@ -11,8 +11,9 @@
 
     <script src="http://student05web.mssu.edu/Javascripts(Raw)/AdminPageScripts/AdminLoginScript.js"></script>
 
+    <?php include($_SERVER['DOCUMENT_ROOT'].'/.db.inc.php'); ?>
+
     <?php
-    session_start();
 
     function test_input($data)
     {
@@ -25,19 +26,6 @@
     if (($_SERVER["REQUEST_METHOD"] == "POST")  && (!isset($_POST["adminLogout"]))) {
         $emailInput = test_input($_POST["email"]);
         $passwordInput = test_input($_POST["password"]);
-
-        $servername = "209.106.201.103";
-        $username = "dbstudent14";
-        $password = "spicymonster10";
-        $dbname = "group5";
-
-        // Create connection
-        $conn = new mysqli($servername, $username, $password, $dbname);
-
-        // Check connection
-        if ($conn->connect_error) {
-            die("Connection failed: " . $conn->connect_error);
-        }
 
         $stmt = $conn->prepare("SELECT * FROM Employee WHERE email = ? AND password = ? AND isAdmin = 1");
         $stmt->bind_param("ss", $emailInput, $passwordInput);

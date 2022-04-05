@@ -11,8 +11,9 @@
 
     <script src="http://student05web.mssu.edu/Javascripts(Raw)/AdminPageScripts/AdminAddItemScript.js"></script>
 
+    <?php include($_SERVER['DOCUMENT_ROOT'].'/.db.inc.php'); ?>
+
     <?php
-    session_start();
 
     function test_input($data)
     {
@@ -26,18 +27,6 @@
         $prodTypeInput = test_input($_POST["prodType"]);
         $prodNameInput = test_input($_POST["prodName"]);
         $prodCostInput = test_input($_POST["prodCost"]);
-
-        $servername = "209.106.201.103";
-        $username = "dbstudent14";
-        $password = "spicymonster10";
-        $dbname = "group5";
-
-        $conn = new mysqli($servername, $username, $password, $dbname);
-
-        // Check connection
-        if ($conn->connect_error) {
-            die("Connection failed: " . $conn->connect_error);
-        }
 
         $selectStmt = $conn->prepare("SELECT * FROM Product WHERE productType = ? AND name = ? AND cost = ?;");
         $selectStmt->bind_param("sss", $prodTypeInput, $prodNameInput, $prodCostInput);
